@@ -135,6 +135,8 @@
 		}
 
 		var client = new Paho.MQTT.Client(currentSettings.server,
+										userName: currentSettings.username,
+										password: currentSettings.password,
 										currentSettings.port, 
 										currentSettings.client_id);
 		client.onConnectionLost = onConnectionLost;
