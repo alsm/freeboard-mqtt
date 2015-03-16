@@ -140,6 +140,9 @@
 		client.onConnectionLost = onConnectionLost;
 		client.onMessageArrived = onMessageArrived;
 		client.connect({onSuccess:onConnect, 
+						
+						userName: currentSettings.username,
+						password: currentSettings.password,
 						useSSL: currentSettings.use_ssl});
 	}
 }());
