@@ -10,7 +10,7 @@
 		"display_name": "IBM IoT Foundation",
         "description" : "Receive data from your devices in IBM IoT Foundation.",
 		"external_scripts" : [
-			"http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/plain/src/mqttws31.js"
+			"https://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/plain/src/mqttws31.js"
 		],
 		"settings"    : [
 			{
