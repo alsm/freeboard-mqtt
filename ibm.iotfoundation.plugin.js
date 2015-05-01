@@ -3,14 +3,14 @@
 (function()
 {
 	// ### Datasource Definition
-	//
+	// Please replace the external_scripts location with a local replica of the Paho MQTT client when possible
 	// -------------------
 	freeboard.loadDatasourcePlugin({
 		"type_name"   : "ibm_iotf",
 		"display_name": "IBM IoT Foundation",
         "description" : "Receive data from your devices in IBM IoT Foundation.",
 		"external_scripts" : [
-			"<full address of the paho mqtt javascript client>"
+			"http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/plain/src/mqttws31.js"
 		],
 		"settings"    : [
 			{
