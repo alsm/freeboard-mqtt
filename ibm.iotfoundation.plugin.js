@@ -96,7 +96,7 @@
 			client.connect({onSuccess:onConnect,
 							userName: currentSettings.api_key,
 							password: currentSettings.api_auth_token,
-							useSSL: true,
+							useSSL: false,
 							mqttVersion: 3
 			});
 		}
@@ -118,13 +118,13 @@
 
 		console.log((new Date().getTime()).toString());
 		var client = new Paho.MQTT.Client(currentSettings.org_id + '.messaging.internetofthings.ibmcloud.com',
-										8883, currentSettings.api_key + (new Date().getTime()).toString());
+										1883, currentSettings.api_key + (new Date().getTime()).toString());
 		client.onConnectionLost = onConnectionLost;
 		client.onMessageArrived = onMessageArrived;
 		client.connect({onSuccess:onConnect, 
 						userName: currentSettings.api_key, 
 						password: currentSettings.api_auth_token,
-						useSSL: true,
+						useSSL: false,
 						mqttVersion: 3
 		});
 	}
