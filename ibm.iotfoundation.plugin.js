@@ -124,6 +124,8 @@
 		client.connect({onSuccess:onConnect, 
 						userName: currentSettings.api_key, 
 						password: currentSettings.api_auth_token,
-						useSSL: true});
+						useSSL: true,
+						mqttVersion: 3
+		});
 	}
 }());
