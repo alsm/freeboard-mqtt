@@ -97,7 +97,7 @@
 							userName: currentSettings.api_key,
 							password: currentSettings.api_auth_token,
 							useSSL: true,
-							mqttVersion: 4
+							mqttVersion: 3
 			});
 		}
 
