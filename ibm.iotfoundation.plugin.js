@@ -96,7 +96,9 @@
 			client.connect({onSuccess:onConnect,
 							userName: currentSettings.api_key,
 							password: currentSettings.api_auth_token,
-							useSSL: true});
+							useSSL: true,
+							mqttVersion: 4
+			});
 		}
 
 		// **updateNow()** (required) : A public function we must implement that will be called when the user wants to manually refresh the datasource
