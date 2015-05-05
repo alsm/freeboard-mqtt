@@ -969,7 +969,7 @@ Paho.MQTT = (function (global) {
 		// When the socket is open, this client will send the CONNECT WireMessage using the saved parameters. 
 		if (this.connectOptions.useSSL) {
 		    var uriParts = wsurl.split(":");
-		    uriParts[0] = "wss";
+		    uriParts[0] = "tls";
 		    wsurl = uriParts.join(":");
 		}
 		this.connected = false;
