@@ -1578,7 +1578,7 @@ Paho.MQTT = (function (global) {
 	        // port: clientId
 	        clientId = port;
 	        uri = host;
-	        var match = uri.match(/^(wss?):\/\/((\[(.+)\])|([^\/]+?))(:(\d+))?(\/.*)$/);
+	        var match = uri.match(/^(tls?):\/\/((\[(.+)\])|([^\/]+?))(:(\d+))?(\/.*)$/);
 	        if (match) {
 	            host = match[4]||match[2];
 	            port = parseInt(match[7]);
@@ -1760,7 +1760,7 @@ Paho.MQTT = (function (global) {
 				for (var i = 0; i<connectOptions.hosts.length; i++) {
 					if (typeof connectOptions.hosts[i] !== "string")
 						throw new Error(format(ERROR.INVALID_TYPE, [typeof connectOptions.hosts[i], "connectOptions.hosts["+i+"]"]));
-					if (/^(wss?):\/\/((\[(.+)\])|([^\/]+?))(:(\d+))?(\/.*)$/.test(connectOptions.hosts[i])) {
+					if (/^(tls?):\/\/((\[(.+)\])|([^\/]+?))(:(\d+))?(\/.*)$/.test(connectOptions.hosts[i])) {
 						if (i == 0) {
 							usingURIs = true;
 						} else if (!usingURIs) {
