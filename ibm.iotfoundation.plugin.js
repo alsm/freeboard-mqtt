@@ -96,8 +96,7 @@
 			client.connect({onSuccess:onConnect,
 							userName: currentSettings.api_key,
 							password: currentSettings.api_auth_token,
-							useSSL: false,
-							mqttVersion: 3
+							useSSL: false
 			});
 		}
 
@@ -124,8 +123,7 @@
 		client.connect({onSuccess:onConnect, 
 						userName: currentSettings.api_key, 
 						password: currentSettings.api_auth_token,
-						useSSL: false,
-						mqttVersion: 3
+						useSSL: false
 		});
 	}
 }());
