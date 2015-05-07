@@ -123,7 +123,12 @@
 		client.connect({onSuccess:onConnect, 
 						userName: currentSettings.api_key, 
 						password: currentSettings.api_auth_token,
-						useSSL: true
+						useSSL: true,
+						timeout: 3,
+						cleanSession: true,
+						onFailure: function (message) {
+                					console.log("Connection failed: " + message.errorMessage);
+            					}
 		});
 	}
 }());
