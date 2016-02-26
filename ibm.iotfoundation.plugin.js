@@ -83,7 +83,7 @@
 						userName: currentSettings.api_key, 
 						password: currentSettings.api_auth_token,
 						useSSL: true,
-						timeout: 3,
+						timeout: 10,
 						cleanSession: true,
 						onFailure: function (message) {
                 					console.log("Connection failed: " + message.errorMessage);
@@ -119,7 +119,7 @@
 						userName: currentSettings.api_key, 
 						password: currentSettings.api_auth_token,
 						useSSL: true,
-						timeout: 3,
+						timeout: 10,
 						cleanSession: true,
 						onFailure: function (message) {
                 					console.log("Connection failed: " + message.errorMessage);
@@ -145,7 +145,7 @@
 						userName: currentSettings.api_key, 
 						password: currentSettings.api_auth_token,
 						useSSL: true,
-						timeout: 3,
+						timeout: 10,
 						cleanSession: true,
 						onFailure: function (message) {
                 					console.log("Connection failed: " + message.errorMessage);
