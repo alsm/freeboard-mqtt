@@ -76,8 +76,19 @@
 		};
 		
 		function onConnectionLost(responseObject) {
+			console.log("Connection Lost");
 			if (responseObject.errorCode !== 0)
 				console.log("onConnectionLost:"+responseObject.errorMessage);
+			client.connect({onSuccess:onConnect, 
+						userName: currentSettings.api_key, 
+						password: currentSettings.api_auth_token,
+						useSSL: true,
+						timeout: 3,
+						cleanSession: true,
+						onFailure: function (message) {
+                					console.log("Connection failed: " + message.errorMessage);
+            					}
+			});
 		};
 
 		function onMessageArrived(message) {
@@ -103,7 +114,17 @@
 		// **updateNow()** (required) : A public function we must implement that will be called when the user wants to manually refresh the datasource
 		self.updateNow = function()
 		{
-			// Don't need to do anything here, can't pull an update from MQTT.
+			console.log("Forcing Update");
+			client.connect({onSuccess:onConnect, 
+						userName: currentSettings.api_key, 
+						password: currentSettings.api_auth_token,
+						useSSL: true,
+						timeout: 3,
+						cleanSession: true,
+						onFailure: function (message) {
+                					console.log("Connection failed: " + message.errorMessage);
+            					}
+			});
 		}
 
 		// **onDispose()** (required) : A public function we must implement that will be called when this instance of this plugin is no longer needed. Do anything you need to cleanup after yourself here.
