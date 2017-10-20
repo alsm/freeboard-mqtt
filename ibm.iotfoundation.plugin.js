@@ -3,14 +3,14 @@
 (function()
 {
 	// ### Datasource Definition
-	//
+	// Please replace the external_scripts location with a local replica of the Paho MQTT client when possible
 	// -------------------
 	freeboard.loadDatasourcePlugin({
 		"type_name"   : "ibm_iotf",
 		"display_name": "IBM IoT Foundation",
         "description" : "Receive data from your devices in IBM IoT Foundation.",
 		"external_scripts" : [
-			"<full address of the paho mqtt javascript client>"
+			"https://rawgit.com/benjaminchodroff/freeboard-mqtt/paho-mqtt-default/mqttws31.js"
 		],
 		"settings"    : [
 			{
@@ -76,8 +76,19 @@
 		};
 		
 		function onConnectionLost(responseObject) {
+			console.log("Connection Lost");
 			if (responseObject.errorCode !== 0)
 				console.log("onConnectionLost:"+responseObject.errorMessage);
+			client.connect({onSuccess:onConnect, 
+						userName: currentSettings.api_key, 
+						password: currentSettings.api_auth_token,
+						useSSL: true,
+						timeout: 10,
+						cleanSession: true,
+						onFailure: function (message) {
+                					console.log("Connection failed: " + message.errorMessage);
+            					}
+			});
 		};
 
 		function onMessageArrived(message) {
@@ -96,13 +107,24 @@
 			client.connect({onSuccess:onConnect,
 							userName: currentSettings.api_key,
 							password: currentSettings.api_auth_token,
-							useSSL: true});
+							useSSL: true
+			});
 		}
 
 		// **updateNow()** (required) : A public function we must implement that will be called when the user wants to manually refresh the datasource
 		self.updateNow = function()
 		{
-			// Don't need to do anything here, can't pull an update from MQTT.
+			console.log("Forcing Update");
+			client.connect({onSuccess:onConnect, 
+						userName: currentSettings.api_key, 
+						password: currentSettings.api_auth_token,
+						useSSL: true,
+						timeout: 10,
+						cleanSession: true,
+						onFailure: function (message) {
+                					console.log("Connection failed: " + message.errorMessage);
+            					}
+			});
 		}
 
 		// **onDispose()** (required) : A public function we must implement that will be called when this instance of this plugin is no longer needed. Do anything you need to cleanup after yourself here.
@@ -116,12 +138,18 @@
 
 		console.log((new Date().getTime()).toString());
 		var client = new Paho.MQTT.Client(currentSettings.org_id + '.messaging.internetofthings.ibmcloud.com',
-										8883, currentSettings.api_key + (new Date().getTime()).toString());
+										8883, 'a:'+currentSettings.org_id+':'+currentSettings.api_key + (new Date().getTime()).toString());
 		client.onConnectionLost = onConnectionLost;
 		client.onMessageArrived = onMessageArrived;
 		client.connect({onSuccess:onConnect, 
 						userName: currentSettings.api_key, 
 						password: currentSettings.api_auth_token,
-						useSSL: true});
+						useSSL: true,
+						timeout: 10,
+						cleanSession: true,
+						onFailure: function (message) {
+                					console.log("Connection failed: " + message.errorMessage);
+            					}
+		});
 	}
 }());

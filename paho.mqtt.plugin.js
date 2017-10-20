@@ -3,14 +3,14 @@
 (function()
 {
 	// ### Datasource Definition
-	//
+	// Please replace the external_scripts location with a local replica of the Paho MQTT client when possible
 	// -------------------
 	freeboard.loadDatasourcePlugin({
 		"type_name"   : "paho_mqtt",
 		"display_name": "Paho MQTT",
         "description" : "Receive data from an MQTT server.",
 		"external_scripts" : [
-			"<full address of the paho mqtt javascript client>"
+			"https://rawgit.com/benjaminchodroff/freeboard-mqtt/paho-mqtt-default/mqttws31.js"
 		],
 		"settings"    : [
 			{
