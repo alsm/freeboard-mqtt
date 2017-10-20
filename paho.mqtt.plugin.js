@@ -10,7 +10,7 @@
 		"display_name": "Paho MQTT",
         "description" : "Receive data from an MQTT server.",
 		"external_scripts" : [
-			"http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/plain/src/mqttws31.js"
+			"https://rawgit.com/benjaminchodroff/freeboard-mqtt/paho-mqtt-default/mqttws31.js"
 		],
 		"settings"    : [
 			{
