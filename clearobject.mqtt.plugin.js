@@ -41,7 +41,7 @@
         "name": "use_encryption",
         "display_name": "Use Encryption",
         "type": "boolean",
-        "description": "Use TLS encryption to connect to the MQTT Server securely (recommended)",
+        "description": "Use TLS encryption to connect to the MQTT Server securely (freeboard.io requires all brokers to use encryption)",
         "default_value": true
       },
       {
