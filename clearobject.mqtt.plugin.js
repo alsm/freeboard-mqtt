@@ -11,7 +11,7 @@
     "display_name": "MQTT",
     "description": "MQTT 3.1.1 is an ISO standard publish-subscribe based message protocol for fast and secure IoT communication over TCP/IP.<br><br>For a quick demo, try the <a href='https://quickstart.internetofthings.ibmcloud.com/iotsensor/' target='_blank'>IBM Watson IoT Quickstart</a>. Enter any name for this plugin, substitute the DEVICEID shown in the upper right of the quickstart in the topic setting, save, and then add a pane and text widget in freeboard to show the data returned from your datasource.<br><br>This opensource plugin is community supported with help from <a href='https://www.clearobject.com' target='_blank'>ClearObject</a>, <a href='https://www.eclipse.org/paho/' target='_blank'>Eclipse Paho</a>, and <a href='https://internetofthings.ibmcloud.com' target='_blank'>IBM Watson IoT</a>. Contact <a href='mailto:benjamin.chodroff@clearobject.com'>Benjamin Chodroff</a> for IoT assistance.",
     "external_scripts": [
-      "https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js"
+      "https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js"
     ],
     "settings": [{
         "name": "topic",
@@ -104,7 +104,7 @@
       console.log("Connection Lost");
       if (responseObject.errorCode !== 0)
         console.log("onConnectionLost: " + responseObject.errorMessage);
-      var client = new Paho.MQTT.Client(currentSettings.server, currentSettings.port, 'a:' + currentSettings.client_id + ':' + currentSettings.api_key + (new Date().getTime()).toString());
+      var client = new Paho.Client(currentSettings.server, currentSettings.port, 'a:' + currentSettings.client_id + ':' + currentSettings.api_key + (new Date().getTime()).toString());
       client.connect({
         onSuccess: onConnect,
         userName: currentSettings.api_key,
@@ -140,7 +140,7 @@
 
       data = {};
       currentSettings = newSettings;
-      var client = new Paho.MQTT.Client(currentSettings.server, currentSettings.port, 'a:' + currentSettings.client_id + ':' + currentSettings.api_key + (new Date().getTime()).toString());
+      var client = new Paho.Client(currentSettings.server, currentSettings.port, 'a:' + currentSettings.client_id + ':' + currentSettings.api_key + (new Date().getTime()).toString());
       client.connect({
         onSuccess: onConnect,
         userName: currentSettings.api_key,
@@ -162,7 +162,7 @@
       } catch (err) {
         console.log("Could not disconnect client: " + err);
       }
-      var client = new Paho.MQTT.Client(currentSettings.server, currentSettings.port, 'a:' + currentSettings.client_id + ':' + currentSettings.api_key + (new Date().getTime()).toString());
+      var client = new Paho.Client(currentSettings.server, currentSettings.port, 'a:' + currentSettings.client_id + ':' + currentSettings.api_key + (new Date().getTime()).toString());
       client.connect({
         onSuccess: onConnect,
         userName: currentSettings.api_key,
@@ -185,7 +185,7 @@
     }
 
     console.log("Creating Paho client at timestamp=" + (new Date().getTime()).toString());
-    var client = new Paho.MQTT.Client(currentSettings.server, currentSettings.port, 'a:' + currentSettings.client_id + ':' + currentSettings.api_key + (new Date().getTime()).toString());
+    var client = new Paho.Client(currentSettings.server, currentSettings.port, 'a:' + currentSettings.client_id + ':' + currentSettings.api_key + (new Date().getTime()).toString());
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
     client.connect({

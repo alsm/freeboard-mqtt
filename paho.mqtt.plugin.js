@@ -10,7 +10,7 @@
 		"display_name": "Paho MQTT",
         "description" : "Receive data from an MQTT server.",
 		"external_scripts" : [
-			"https://rawgit.com/benjaminchodroff/freeboard-mqtt/paho-mqtt-default/mqttws31.js"
+			"https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js"
 		],
 		"settings"    : [
 			{
@@ -134,7 +134,7 @@
 			client = {};
 		}
 
-		var client = new Paho.MQTT.Client(currentSettings.server,
+		var client = new Paho.Client(currentSettings.server,
 										currentSettings.port, 
 										currentSettings.client_id);
 		client.onConnectionLost = onConnectionLost;
